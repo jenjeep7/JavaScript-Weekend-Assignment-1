@@ -31,12 +31,15 @@ var claim5 = {
 var initialList = [claim1, claim2, claim3, claim4, claim5];
 
 var totalPayedOut = 0;
+var paidList = "";
+
 
 function claim(name, type, cost){
 	this.patientName = name;
 	this.visitType = type;
 	this.visitCost = cost;
 }
+//new objects being created
 var claim6 = new claim("Josh Cool", "Emergency", 2300);
 var claim7 = new claim("Nancy Fancy", "Primary Care", 250);
 var claim8 = new claim("Cody Hockey", "Optical", 575);
@@ -44,6 +47,7 @@ var claim8 = new claim("Katie Cutie", "Primary Care", 175);
 var claim9 = new claim("Hunter Hotshot", "Emergency", 12000);
 var claim10 = new claim("Chief Doggie", "Specialist", 800);
 
+//pushing all new claims to the initialList array
 initialList.push(claim6, claim7, claim8, claim9, claim10);
 
 for(var x = 0 ; x<initialList.length; x++) {
@@ -51,9 +55,17 @@ for(var x = 0 ; x<initialList.length; x++) {
 // console.log(namePatient);
 	var paid = amountCovered(initialList[x]);
 	totalPayedOut += paid;
-	console.log("Paid out $" + paid + " for " + namePatient + ".");
+	paidList = "Paid out $" + paid + " for " + namePatient + ".";
+	console.log(paidList);
+    addToNode(paidList);
+
 }
-console.log('Total paid out $', totalPayedOut);
+
+var payedOutText = 'Total paid out $'+ totalPayedOut;
+console.log(payedOutText);
+// adds payed out amount to the DOM
+addTotalPaid(payedOutText);
+
 // //function to determine percent covered
 function percentCovered(patient) {
 	var covered = 0;
@@ -84,4 +96,19 @@ function amountCovered(patient) {
 	var amountPaid = patient.visitCost * percent;
 	// console.log(amountPaid);
 	return Math.round(amountPaid);
+}
+//this function is adding payout list to the DOM
+function addToNode(stuff) {
+    var htmlList = document.createElement("li");
+    var textnode = document.createTextNode(stuff);
+		document.getElementById("transactions").appendChild(htmlList);
+
+    htmlList.appendChild(textnode);
+	}
+	//this function is used to add the total paid to the DOM
+function addTotalPaid(input) {
+	var totalPaid = document.createElement("p");
+	var textnode = document.createTextNode(input);
+	document.getElementById("main").appendChild(totalPaid);
+	totalPaid.appendChild(textnode);
 }
