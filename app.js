@@ -104,6 +104,10 @@ function addToNode(stuff) {
 		document.getElementById("transactions").appendChild(htmlList);
 
     htmlList.appendChild(textnode);
+		htmlList.style.setProperty('color', 'blue');
+		htmlList.style.background = "#ccc";
+		htmlList.style.fontSize= "25px";
+		htmlList.style.width = "40%";
 	}
 	//this function is used to add the total paid to the DOM
 function addTotalPaid(input) {
@@ -111,4 +115,7 @@ function addTotalPaid(input) {
 	var textnode = document.createTextNode(input);
 	document.getElementById("main").appendChild(totalPaid);
 	totalPaid.appendChild(textnode);
+	totalPaid.style.setProperty('border-bottom','1px solid black','');
+	totalPaid.style.fontSize = "30px";
+	totalPaid.style.width = '40%';
 }
