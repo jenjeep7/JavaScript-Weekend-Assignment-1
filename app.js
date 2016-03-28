@@ -49,7 +49,7 @@ var claim10 = new claim("Chief Doggie", "Specialist", 800);
 
 //pushing all new claims to the initialList array
 initialList.push(claim6, claim7, claim8, claim9, claim10);
-
+$(document).ready(function() {
 for(var x = 0 ; x<initialList.length; x++) {
 	var namePatient = initialList[x].patientName;
 // console.log(namePatient);
@@ -119,3 +119,4 @@ function addTotalPaid(input) {
 	totalPaid.style.fontSize = "30px";
 	totalPaid.style.width = '40%';
 }
+});
